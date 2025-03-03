@@ -14,7 +14,35 @@
 
         <h1>#{testView.string}</h1>
         <h:form id="frmTest">
+            <p:panel header="Empty menu by default">
+                <p:dataTable id="t1" value="#{testView.list}" var="item"
+                             selectionMode="single"
+                             rowKey="#{item.name}"
+                             selection="#{testView.selectedItem1}">
+                    <p:column headerText="name">
+                        <h:outputText value="#{item.name}"/>
+                    </p:column>
 
+                    <p:ajax event="contextMenu" listener="#{testView.onContextMenuShow1}"/>
+                </p:dataTable>
+
+                <p:contextMenu id="cm1" for="t1" model="#{testView.menuModel1}"/>
+            </p:panel>
+
+            <p:panel header="Non Empty menu by default">
+                <p:dataTable id="t2" value="#{testView.list}" var="item"
+                             selectionMode="single"
+                             rowKey="#{item.name}"
+                             selection="#{testView.selectedItem2}">
+                    <p:column headerText="name">
+                        <h:outputText value="#{item.name}"/>
+                    </p:column>
+
+                    <p:ajax event="contextMenu" listener="#{testView.onContextMenuShow2}"/>
+                </p:dataTable>
+
+                <p:contextMenu id="cm2" for="t2" model="#{testView.menuModel2}"/>
+            </p:panel>
         </h:form>
 
     </h:body>
