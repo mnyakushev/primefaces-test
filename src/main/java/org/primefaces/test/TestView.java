@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import lombok.Data;
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
 
 @Data
 @Named
@@ -23,6 +25,8 @@ public class TestView implements Serializable {
     private LocalDateTime localDateTime;
     private List<TestObject> list;
 
+    private TreeNode<String> rootNode;
+
     @PostConstruct
     public void init() {
         string = "Welcome to PrimeFaces!!!";
@@ -32,6 +36,9 @@ public class TestView implements Serializable {
                 new TestObject("The Bodyguard", "Whitney Houston", 1992),
                 new TestObject("The Dark Side of the Moon", "Pink Floyd", 1973)
         ));
+
+        rootNode = new DefaultTreeNode<>(null);
+        new DefaultTreeNode<>("test", rootNode);
     }
 
 }

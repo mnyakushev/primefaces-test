@@ -14,7 +14,13 @@
 
         <h1>#{testView.string}</h1>
         <h:form id="frmTest">
-
+            <p:treeTable value="#{testView.rootNode}"
+                         var="str">
+                <p:column headerText="Header"
+                          title="my unique title">
+                    <h:outputText value="#{str}"/>
+                </p:column>
+            </p:treeTable>
         </h:form>
 
     </h:body>
